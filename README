@@ -1,0 +1,7 @@
+In
+/etc/neo4j/neo4j-server.properties
+
+uncomment:
+org.neo4j.server.webserver.port=7474
+
+to allow port forwarding on vagrant box
