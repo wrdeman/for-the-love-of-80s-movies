@@ -1,5 +1,4 @@
 server{
-  # server_name 127.0.0.1 yourhost@example.com;
   access_log /var/log/nginx/domain-access.log;
 
   location / {
@@ -17,8 +16,6 @@ server{
     }
 
 
-    # This line is important as it tells nginx to channel all requests to port 8000.
-    # We will later run our wsgi application on this port using gunicorn.
     proxy_pass http://127.0.0.1:8000/;
   }
 

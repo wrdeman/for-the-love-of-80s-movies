@@ -6,6 +6,7 @@ website_venv_bin: /home/vagrant/venv/site
 
 # source code
 website_src_dir: /home/vagrant/app
+website_app_path: /home/vagrant/app/app
 website_requirements_path: /home/vagrant/app/requirements.txt
 
 

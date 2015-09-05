@@ -1,4 +1,4 @@
 include:
   - website.flask
-  - website.runit
+  - website.wsgiserver
   - website.webserver

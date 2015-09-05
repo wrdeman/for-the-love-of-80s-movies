@@ -24,7 +24,7 @@
 git:
   pkg.installed
 
-node.js:
+nodejs:
   pkg.installed
 
 node_link:

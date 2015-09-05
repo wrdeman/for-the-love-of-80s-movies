@@ -1,4 +1,4 @@
-/etc/supervisor/conf.d/website_gunicorn.conf:
+/etc/supervisor/conf.d/website.conf:
   file:
     - managed
     - create: True
@@ -24,9 +24,7 @@ supervisor:
 
 gunicorn:
   pip.installed:
-    #- name: gunicorn
     - bin_env: {{ pillar ['website_venv_bin'] }}
-    #- cmd: /home/vagrant/venv/bin
     - require:
       - pkg: python-pip
 
@@ -37,7 +35,7 @@ supervisored_gunicorn:
     - update: True
     - restart: True
     - watch:
-      - file: /etc/supervisor/conf.d/website_gunicorn.conf
+      - file: /etc/supervisor/conf.d/website.conf
       - file: /home/vagrant/gunicorn.conf.py
     - require:
       - pkg: supervisor
