@@ -3,21 +3,21 @@ from flask import g
 from py2neo import authenticate, Graph
 
 
-def connect_db():
-    authenticate("localhost:7474", "neo4j", "0000")
-    return Graph()
-
-
 def get_db():
     """Opens a new database connection if there is none yet for the
     current application context.
     """
     if not hasattr(g, 'graph_db'):
-        g.graph_db = connect_db()
+        authenticate("localhost:7474", "neo4j", "0000")
+        g.graph_db = Graph()
         return g.graph_db
 
 
 def get_actor(actor_id):
+    """ returns name, biography and films associated to actor
+
+    input: actor_id
+    """
     graph = get_db()
     if isinstance(actor_id, int):
         try:
@@ -51,6 +51,14 @@ def get_actor(actor_id):
 
 
 def search(q, actor=True, movie=True):
+    """ search all actors/movies
+    return dict actors, movies
+
+    actors = {"actors": [{"name": name, "id": id}]
+
+    kwargs:
+    actor/movie True, False to search for either category
+    """
     graph = get_db()
     actors, movies = {}, {}
     if actor:
