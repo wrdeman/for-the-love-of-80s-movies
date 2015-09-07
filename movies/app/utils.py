@@ -48,3 +48,32 @@ def get_actor(actor_id):
         )
 
     return ctx
+
+
+def search(q, actor=True, movie=True):
+    graph = get_db()
+    actors, movies = {}, {}
+    if actor:
+        query = ("MATCH (actor:Actor) "
+                 "WHERE actor.name =~ '(?i).*"+q+".*' "
+                 "RETURN actor")
+        results = graph.cypher.execute(query)
+        actors = {
+            'actors': [
+                {'name': row.actor['name'], 'id': row.actor['id']}
+                for row in results
+            ]
+        }
+    if movie:
+        query = ("MATCH (movie:Movie) "
+                 "WHERE movie.title =~ '(?i).*"+q+".*' "
+                 "RETURN movie")
+        results = graph.cypher.execute(query)
+        movies = {
+            'movies': [
+                {'title': row.movie['title'], 'id': row.movie['id']}
+                for row in results
+            ]
+        }
+
+    return actors, movies

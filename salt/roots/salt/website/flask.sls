@@ -21,6 +21,12 @@
       - group
       - mode
 
+.bowerrc:
+    - managed
+    - create: True
+    - source: salt://website/bowerrc
+    - template: jinja
+
 git:
   pkg.installed
 
