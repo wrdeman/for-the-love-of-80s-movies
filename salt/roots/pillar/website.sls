@@ -10,7 +10,8 @@ website_app_path: /home/vagrant/app/app
 website_requirements_path: /home/vagrant/app/requirements.txt
 
 #bower
-website_src_dir: scripts/bower_components
+bower_dir: scripts/bower_components
+bower_path: /home/vagrant/app/.bowerrc
 
 # gunicorn paths
 website_gunicorn_bin_path: /home/vagrant/venv/site/bin/gunicorn

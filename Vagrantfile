@@ -11,6 +11,7 @@ Vagrant.configure('2') do |config|
   config.vm.hostname = 'dev'
   config.vm.network "forwarded_port", guest: 80, host: 8000
   config.vm.network "forwarded_port", guest: 7474, host: 7474
+  # config.vm.network "forwarded_port", guest: 8888, host: 8888
 
   config.vm.provision :shell, inline: 'sudo apt-get install -y redir'
 

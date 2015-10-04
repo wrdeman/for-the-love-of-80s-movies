@@ -21,9 +21,9 @@
       - group
       - mode
 
-.bowerrc:
+{{ pillar['bower_path'] }}:
+  file:
     - managed
-    - create: True
     - source: salt://website/bowerrc
     - template: jinja
 
@@ -43,7 +43,6 @@ bower:
   npm.installed:
     - require:
       - pkg: npm
-
 
 app_requirements:
   pip.installed:

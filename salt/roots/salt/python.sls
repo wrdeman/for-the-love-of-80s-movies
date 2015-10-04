@@ -4,6 +4,7 @@ python2:
     - names:
       - python-dev
       - python
+      - libzmq-dev
 
 pip:
   pkg:
@@ -12,8 +13,11 @@ pip:
     - require:
       - pkg: python2
 
-ipython:
+ipython_notebook:
   pip:
     - installed
+    - names:
+      - jupyter
+      - pyzmq
     - require:
       - pkg: pip
